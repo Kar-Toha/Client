@@ -20,7 +20,10 @@ public class MainJFrame extends javax.swing.JFrame {
         jLabel9.setVisible(false);
         jLabel10.setVisible(false);
         jLabel11.setVisible(false);
+        jLabel16.setVisible(false);
+
     }
+    boolean add, edit, remove, print;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -31,6 +34,7 @@ public class MainJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel5 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
@@ -61,6 +65,8 @@ public class MainJFrame extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jLabel16 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Student's Reference Book");
@@ -162,16 +168,43 @@ public class MainJFrame extends javax.swing.JFrame {
         );
 
         jButton1.setText("Add");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Edit");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Remove");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Print");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
+        buttonGroup1.add(jRadioButton1);
         jRadioButton1.setText("Student");
         jRadioButton1.setEnabled(false);
+        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton1ActionPerformed(evt);
+            }
+        });
 
+        buttonGroup1.add(jRadioButton2);
         jRadioButton2.setText("Group");
         jRadioButton2.setEnabled(false);
 
@@ -215,7 +248,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jLabel3.setText("Choose ID");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "All" }));
         jComboBox1.setEnabled(false);
 
         jLabel4.setText("Input name");
@@ -254,6 +287,18 @@ public class MainJFrame extends javax.swing.JFrame {
         jButton5.setToolTipText("");
         jButton5.setEnabled(false);
 
+        jButton6.setText("Cancel");
+        jButton6.setEnabled(false);
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
+        jLabel16.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel16.setText("ID isn't chosen");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -264,7 +309,8 @@ public class MainJFrame extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel16))
                         .addGap(29, 29, 29)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -285,7 +331,10 @@ public class MainJFrame extends javax.swing.JFrame {
                             .addComponent(jLabel11)
                             .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7)))
-                    .addComponent(jButton5))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jButton5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton6)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -315,9 +364,12 @@ public class MainJFrame extends javax.swing.JFrame {
                     .addComponent(jLabel8)
                     .addComponent(jLabel9)
                     .addComponent(jLabel10)
-                    .addComponent(jLabel11))
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel16))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton5))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton5)
+                    .addComponent(jButton6)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -344,17 +396,124 @@ public class MainJFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if (jButton1.isFocusable()) {
+            jButton2.setEnabled(false);
+            jButton3.setEnabled(false);
+            jButton4.setEnabled(false);
+            jButton6.setEnabled(true);
+            jRadioButton1.setEnabled(true);
+            jRadioButton2.setEnabled(true);
+            add = true;
+            jButton1.setFocusable(false);           // Ready
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        if (jButton2.isFocusable()) {
+            jButton1.setEnabled(false);
+            jButton3.setEnabled(false);
+            jButton4.setEnabled(false);
+            jButton6.setEnabled(true);
+            jRadioButton1.setEnabled(true);
+            jRadioButton2.setEnabled(true);
+            edit = true;
+            jButton2.setFocusable(false);                   // Ready
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        if (jButton3.isFocusable()) {
+            jButton1.setEnabled(false);
+            jButton2.setEnabled(false);
+            jButton4.setEnabled(false);
+            jButton6.setEnabled(true);
+            jRadioButton1.setEnabled(true);
+            jRadioButton2.setEnabled(true);
+            remove = true;
+            jButton3.setFocusable(false);       // Ready
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+         if(jButton4.isFocusable()){
+        jButton1.setEnabled(false);
+        jButton2.setEnabled(false);
+        jButton3.setEnabled(false);
+        jButton6.setEnabled(true);
+        jRadioButton1.setEnabled(true);
+        jRadioButton2.setEnabled(true);
+        print = true;
+        jButton4.setFocusable(false);           // Ready
+         }
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        jButton1.setEnabled(true);
+        jButton1.setFocusable(true);
+        jButton2.setEnabled(true);
+        jButton2.setFocusable(true);
+        jButton3.setEnabled(true);
+        jButton3.setFocusable(true);
+        jButton4.setEnabled(true);
+        jButton4.setFocusable(true);
+        jButton5.setEnabled(false);
+        jButton6.setEnabled(false);
+        buttonGroup1.clearSelection();
+        jRadioButton1.setEnabled(false);
+        jRadioButton2.setEnabled(false);
+        jComboBox1.setEnabled(false);
+        jTextField1.setText("");
+        jTextField1.setEnabled(false);
+        jTextField2.setText("");
+        jTextField2.setEnabled(false);
+        jTextField3.setText("");
+        jTextField3.setEnabled(false);
+        jTextField4.setText("");
+        jTextField4.setEnabled(false);
+        add = false;
+        edit = false;
+        remove = false;
+        print = false;                          // Ready
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+        jRadioButton1.setEnabled(false);
+        jRadioButton2.setEnabled(false);
+        jButton5.setEnabled(true);
+        if (add) {
+            jTextField1.setEnabled(true);
+            jTextField2.setEnabled(true);
+            jTextField3.setEnabled(true);
+            jTextField4.setEnabled(true);
+        }
+        if (edit) {
+            jComboBox1.setEnabled(true);
+            jTextField1.setEnabled(true);
+            jTextField2.setEnabled(true);
+            jTextField3.setEnabled(true);
+            jTextField4.setEnabled(true);
+        }
+        if (remove) {
+
+        }
+        if (print) {
+
+        }
+    }//GEN-LAST:event_jRadioButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -363,6 +522,7 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
