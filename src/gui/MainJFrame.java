@@ -72,6 +72,8 @@ public class MainJFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Student's Reference Book");
+        setAlwaysOnTop(true);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -258,18 +260,38 @@ public class MainJFrame extends javax.swing.JFrame {
         jLabel4.setText("Input name");
 
         jTextField1.setEnabled(false);
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField1KeyTyped(evt);
+            }
+        });
 
         jLabel5.setText("Input group №");
 
         jTextField2.setEnabled(false);
+        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField2KeyTyped(evt);
+            }
+        });
 
         jLabel6.setText("Input date");
 
         jTextField3.setEnabled(false);
+        jTextField3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField3KeyTyped(evt);
+            }
+        });
 
         jLabel7.setText("Input faculty");
 
         jTextField4.setEnabled(false);
+        jTextField4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField4KeyTyped(evt);
+            }
+        });
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 0, 0));
@@ -292,6 +314,11 @@ public class MainJFrame extends javax.swing.JFrame {
         jLabel16.setText("Wrong input!");
 
         jTextField5.setEnabled(false);
+        jTextField5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField5KeyTyped(evt);
+            }
+        });
 
         jButton6.setText("Cancel");
         jButton6.setEnabled(false);
@@ -545,6 +572,52 @@ public class MainJFrame extends javax.swing.JFrame {
             jTextField4.setEnabled(true);
         }                                      // Ready
     }//GEN-LAST:event_jRadioButton2ActionPerformed
+
+    private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
+        if (edit) {
+            jTextField2.setEnabled(false);
+            jTextField3.setEnabled(false);
+        }
+        if (print) {
+            jTextField5.setEnabled(false);
+            jTextField3.setEnabled(false);
+        }
+
+    }//GEN-LAST:event_jTextField1KeyTyped
+
+    private void jTextField2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyTyped
+        if (edit) {
+            jTextField1.setEnabled(false);
+            jTextField3.setEnabled(false);
+        }
+    }//GEN-LAST:event_jTextField2KeyTyped
+
+    private void jTextField3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyTyped
+        if (edit) {
+            jTextField1.setEnabled(false);
+            jTextField2.setEnabled(false);
+        }
+        if (print) {
+            if(studentEntity){
+            jTextField1.setEnabled(false);
+            jTextField5.setEnabled(false);
+        }
+            else{
+                jTextField4.setEnabled(false);
+            }
+        }
+    }//GEN-LAST:event_jTextField3KeyTyped
+
+    private void jTextField5KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyTyped
+        if (print) {
+            jTextField1.setEnabled(false);
+            jTextField3.setEnabled(false);
+        }
+    }//GEN-LAST:event_jTextField5KeyTyped
+
+    private void jTextField4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyTyped
+        jTextField3.setEnabled(false);
+    }//GEN-LAST:event_jTextField4KeyTyped
 
     /**
      * @param args the command line arguments
