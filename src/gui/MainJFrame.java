@@ -23,7 +23,7 @@ public class MainJFrame extends javax.swing.JFrame {
         jLabel16.setVisible(false);
 
     }
-    boolean add, edit, remove, print;
+    boolean add, edit, remove, print, studentEntity, groupEntity;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -51,7 +51,6 @@ public class MainJFrame extends javax.swing.JFrame {
         jRadioButton2 = new javax.swing.JRadioButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
         jLabel4 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -64,9 +63,12 @@ public class MainJFrame extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
         jLabel16 = new javax.swing.JLabel();
+        jTextField5 = new javax.swing.JTextField();
+        jButton6 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Student's Reference Book");
@@ -151,7 +153,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel15)
                     .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -207,6 +209,11 @@ public class MainJFrame extends javax.swing.JFrame {
         buttonGroup1.add(jRadioButton2);
         jRadioButton2.setText("Group");
         jRadioButton2.setEnabled(false);
+        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -246,10 +253,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel3.setText("Choose ID");
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "All" }));
-        jComboBox1.setEnabled(false);
+        jLabel3.setText("Input ID");
 
         jLabel4.setText("Input name");
 
@@ -283,9 +287,11 @@ public class MainJFrame extends javax.swing.JFrame {
         jLabel11.setForeground(new java.awt.Color(255, 0, 0));
         jLabel11.setText("Wrong input!");
 
-        jButton5.setText("Execute");
-        jButton5.setToolTipText("");
-        jButton5.setEnabled(false);
+        jLabel16.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel16.setText("Wrong input!");
+
+        jTextField5.setEnabled(false);
 
         jButton6.setText("Cancel");
         jButton6.setEnabled(false);
@@ -295,9 +301,9 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel16.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(255, 51, 51));
-        jLabel16.setText("ID isn't chosen");
+        jButton5.setText("Execute");
+        jButton5.setToolTipText("");
+        jButton5.setEnabled(false);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -308,15 +314,20 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3)
-                            .addComponent(jLabel16))
-                        .addGap(29, 29, 29)
+                            .addComponent(jLabel16)
+                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel4))
-                        .addGap(26, 26, 26)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(42, 42, 42)
+                                .addComponent(jLabel8))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(34, 34, 34)
+                                .addComponent(jLabel4))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(34, 34, 34)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(34, 34, 34)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel9)
                             .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -340,7 +351,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jPanel3Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel3, jLabel4, jLabel5, jLabel6, jLabel7});
 
-        jPanel3Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jComboBox1, jTextField1, jTextField2, jTextField3, jTextField4});
+        jPanel3Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jTextField1, jTextField2, jTextField3, jTextField4, jTextField5});
 
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -354,11 +365,11 @@ public class MainJFrame extends javax.swing.JFrame {
                     .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
@@ -366,11 +377,17 @@ public class MainJFrame extends javax.swing.JFrame {
                     .addComponent(jLabel10)
                     .addComponent(jLabel11)
                     .addComponent(jLabel16))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton5)
-                    .addComponent(jButton6)))
+                    .addComponent(jButton6))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        jMenu1.setText("Help");
+        jMenuBar1.add(jMenu1);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -436,16 +453,16 @@ public class MainJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-         if(jButton4.isFocusable()){
-        jButton1.setEnabled(false);
-        jButton2.setEnabled(false);
-        jButton3.setEnabled(false);
-        jButton6.setEnabled(true);
-        jRadioButton1.setEnabled(true);
-        jRadioButton2.setEnabled(true);
-        print = true;
-        jButton4.setFocusable(false);           // Ready
-         }
+        if (jButton4.isFocusable()) {
+            jButton1.setEnabled(false);
+            jButton2.setEnabled(false);
+            jButton3.setEnabled(false);
+            jButton6.setEnabled(true);
+            jRadioButton1.setEnabled(true);
+            jRadioButton2.setEnabled(true);
+            print = true;
+            jButton4.setFocusable(false);           // Ready
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -462,7 +479,8 @@ public class MainJFrame extends javax.swing.JFrame {
         buttonGroup1.clearSelection();
         jRadioButton1.setEnabled(false);
         jRadioButton2.setEnabled(false);
-        jComboBox1.setEnabled(false);
+        jTextField5.setText("");
+        jTextField5.setEnabled(false);
         jTextField1.setText("");
         jTextField1.setEnabled(false);
         jTextField2.setText("");
@@ -474,10 +492,14 @@ public class MainJFrame extends javax.swing.JFrame {
         add = false;
         edit = false;
         remove = false;
-        print = false;                          // Ready
+        print = false;
+        studentEntity = false;
+        groupEntity = false;           //Ready
+
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+        studentEntity = true;
         jRadioButton1.setEnabled(false);
         jRadioButton2.setEnabled(false);
         jButton5.setEnabled(true);
@@ -485,22 +507,44 @@ public class MainJFrame extends javax.swing.JFrame {
             jTextField1.setEnabled(true);
             jTextField2.setEnabled(true);
             jTextField3.setEnabled(true);
+        }
+        if (edit) {
+            jTextField5.setEnabled(true);
+            jTextField1.setEnabled(true);
+            jTextField2.setEnabled(true);
+            jTextField3.setEnabled(true);
+        }
+        if (remove) {
+            jTextField5.setEnabled(true);
+        }
+        if (print) {
+            jTextField1.setEnabled(true);
+            jTextField3.setEnabled(true);
+            jTextField5.setEnabled(true);
+        }                                       // Ready
+    }//GEN-LAST:event_jRadioButton1ActionPerformed
+
+    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+        groupEntity = true;
+        jRadioButton1.setEnabled(false);
+        jRadioButton2.setEnabled(false);
+        jButton5.setEnabled(true);
+        if (add) {
+            jTextField3.setEnabled(true);
             jTextField4.setEnabled(true);
         }
         if (edit) {
-            jComboBox1.setEnabled(true);
-            jTextField1.setEnabled(true);
-            jTextField2.setEnabled(true);
             jTextField3.setEnabled(true);
             jTextField4.setEnabled(true);
         }
         if (remove) {
-
+            jTextField3.setEnabled(true);
         }
         if (print) {
-
-        }
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
+            jTextField3.setEnabled(true);
+            jTextField4.setEnabled(true);
+        }                                      // Ready
+    }//GEN-LAST:event_jRadioButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -514,7 +558,6 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -531,6 +574,8 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -554,5 +599,6 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
     // End of variables declaration//GEN-END:variables
 }
