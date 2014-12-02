@@ -16,7 +16,7 @@ public class MainJFrame extends javax.swing.JFrame {
      */
     public MainJFrame() {
         initComponents();
-        jLabel8.setVisible(false);
+        jLabel8.setVisible(false);            // метки, сообщающие об ошибке ввода
         jLabel9.setVisible(false);
         jLabel10.setVisible(false);
         jLabel11.setVisible(false);
@@ -331,6 +331,11 @@ public class MainJFrame extends javax.swing.JFrame {
         jButton5.setText("Execute");
         jButton5.setToolTipText("");
         jButton5.setEnabled(false);
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -445,7 +450,7 @@ public class MainJFrame extends javax.swing.JFrame {
             jButton2.setEnabled(false);
             jButton3.setEnabled(false);
             jButton4.setEnabled(false);
-            jButton6.setEnabled(true);
+            jButton6.setEnabled(true);                 // нажатие кнопки add
             jRadioButton1.setEnabled(true);
             jRadioButton2.setEnabled(true);
             add = true;
@@ -457,7 +462,7 @@ public class MainJFrame extends javax.swing.JFrame {
         if (jButton2.isFocusable()) {
             jButton1.setEnabled(false);
             jButton3.setEnabled(false);
-            jButton4.setEnabled(false);
+            jButton4.setEnabled(false);                      // нажатие кнопки edit
             jButton6.setEnabled(true);
             jRadioButton1.setEnabled(true);
             jRadioButton2.setEnabled(true);
@@ -470,7 +475,7 @@ public class MainJFrame extends javax.swing.JFrame {
         if (jButton3.isFocusable()) {
             jButton1.setEnabled(false);
             jButton2.setEnabled(false);
-            jButton4.setEnabled(false);
+            jButton4.setEnabled(false);                        // нажатие кнопки remove
             jButton6.setEnabled(true);
             jRadioButton1.setEnabled(true);
             jRadioButton2.setEnabled(true);
@@ -483,7 +488,7 @@ public class MainJFrame extends javax.swing.JFrame {
         if (jButton4.isFocusable()) {
             jButton1.setEnabled(false);
             jButton2.setEnabled(false);
-            jButton3.setEnabled(false);
+            jButton3.setEnabled(false);                           // нажатие кнопки print
             jButton6.setEnabled(true);
             jRadioButton1.setEnabled(true);
             jRadioButton2.setEnabled(true);
@@ -501,7 +506,7 @@ public class MainJFrame extends javax.swing.JFrame {
         jButton3.setFocusable(true);
         jButton4.setEnabled(true);
         jButton4.setFocusable(true);
-        jButton5.setEnabled(false);
+        jButton5.setEnabled(false);        // нажатие кнопки cancel, всё сбрасывается к первоначальному состоянию
         jButton6.setEnabled(false);
         buttonGroup1.clearSelection();
         jRadioButton1.setEnabled(false);
@@ -521,8 +526,12 @@ public class MainJFrame extends javax.swing.JFrame {
         remove = false;
         print = false;
         studentEntity = false;
-        groupEntity = false;           //Ready
-
+        groupEntity = false;
+        jLabel8.setVisible(false);
+        jLabel9.setVisible(false);
+        jLabel10.setVisible(false);
+        jLabel11.setVisible(false);
+        jLabel16.setVisible(false);          // Ready
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
@@ -531,7 +540,7 @@ public class MainJFrame extends javax.swing.JFrame {
         jRadioButton2.setEnabled(false);
         jButton5.setEnabled(true);
         if (add) {
-            jTextField1.setEnabled(true);
+            jTextField1.setEnabled(true);                // выбор сущности студента для изменений
             jTextField2.setEnabled(true);
             jTextField3.setEnabled(true);
         }
@@ -557,7 +566,7 @@ public class MainJFrame extends javax.swing.JFrame {
         jRadioButton2.setEnabled(false);
         jButton5.setEnabled(true);
         if (add) {
-            jTextField3.setEnabled(true);
+            jTextField3.setEnabled(true);       // выбор сущности группы для изменений
             jTextField4.setEnabled(true);
         }
         if (edit) {
@@ -576,48 +585,144 @@ public class MainJFrame extends javax.swing.JFrame {
     private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
         if (edit) {
             jTextField2.setEnabled(false);
-            jTextField3.setEnabled(false);
-        }
+            jTextField3.setEnabled(false);           // реакция на начало заполнения поля имени
+        }                                            // теперь команда определена полностью, лишние поля блокируются
         if (print) {
             jTextField5.setEnabled(false);
             jTextField3.setEnabled(false);
         }
-
+        // Ready
     }//GEN-LAST:event_jTextField1KeyTyped
 
     private void jTextField2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyTyped
         if (edit) {
-            jTextField1.setEnabled(false);
-            jTextField3.setEnabled(false);
-        }
+            jTextField1.setEnabled(false);                 // реакция на начало заполнения поля даты
+            jTextField3.setEnabled(false);                 // теперь команда определена полностью, лишние поля блокируются
+        }                                          // Ready
     }//GEN-LAST:event_jTextField2KeyTyped
 
     private void jTextField3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyTyped
         if (edit) {
             jTextField1.setEnabled(false);
             jTextField2.setEnabled(false);
-        }
-        if (print) {
-            if(studentEntity){
-            jTextField1.setEnabled(false);
-            jTextField5.setEnabled(false);
-        }
-            else{
+        }                                                   // реакция на начало заполнения поля номера группы
+        if (print) {                                        // теперь команда определена полностью, лишние поля блокируются
+            if (studentEntity) {
+                jTextField1.setEnabled(false);
+                jTextField5.setEnabled(false);
+            } else {
                 jTextField4.setEnabled(false);
             }
-        }
+        }                                              // Ready
     }//GEN-LAST:event_jTextField3KeyTyped
 
     private void jTextField5KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyTyped
         if (print) {
-            jTextField1.setEnabled(false);
-            jTextField3.setEnabled(false);
-        }
+            jTextField1.setEnabled(false);                  // реакция на начало заполнения поля персонального номера студента
+            if (print) {                                        // теперь команда определена полностью, лишние поля блокируются
+                jTextField3.setEnabled(false);
+            }                                            // Ready
     }//GEN-LAST:event_jTextField5KeyTyped
-
+    }
     private void jTextField4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyTyped
-        jTextField3.setEnabled(false);
+        jTextField3.setEnabled(false);          // реакция на изменение поля факультета
+        // Ready
     }//GEN-LAST:event_jTextField4KeyTyped
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        boolean isIncorrect = false;                            // кнопка выполнения execute
+        String curString;
+
+        if (jTextField5.isEnabled()) {                      // проверка на корректный ввод персонального номера студента
+            curString = jTextField5.getText();
+            try {
+                int n = Integer.decode(curString);
+            } catch (NumberFormatException e) {
+                jLabel16.setVisible(true);
+                isIncorrect = true;
+            }
+        }
+        if (jTextField1.isEnabled()) {                    // проверка на корректный ввод имени студента
+            curString = jTextField1.getText();
+            char[] curChar = curString.toCharArray();
+            for (int i = 0; i < curChar.length; i++) {
+                if (!Character.isLetter(curChar[i])) {
+                    isIncorrect = true;
+                    jLabel8.setVisible(true);
+                    break;
+                }
+            }
+
+        }
+        if (jTextField2.isEnabled()) {                            // проверка на корректный ввод даты зачисления студента
+            curString = jTextField2.getText();
+            String[] curStrAr = curString.split("\\.");
+            if (curStrAr.length != 3) {
+                isIncorrect = true;
+                jLabel9.setVisible(true);
+            } else {
+                for (int i = 0; i < 3; i++) {
+                    try {
+                        int n = Integer.decode(curStrAr[i]);
+                    } catch (NumberFormatException e) {
+                        jLabel9.setVisible(true);
+                        isIncorrect = true;
+                    }
+                }
+            }
+        }
+        if(jTextField3.isEnabled()){                               // проверка на корректный ввод номера группы
+            curString = jTextField3.getText();
+            try {
+                int n = Integer.decode(curString);
+            } catch (NumberFormatException e) {
+                jLabel10.setVisible(true);
+                isIncorrect = true;
+            }
+        }
+        if(jTextField4.isEnabled()){                             // проверка на корректный ввод факультета
+            curString = jTextField4.getText();
+            char[] curChar = curString.toCharArray();
+            for (int i = 0; i < curChar.length; i++) {
+                if (!Character.isLetter(curChar[i])) {
+                    isIncorrect = true;
+                    jLabel11.setVisible(true);
+                    break;
+                }
+            }
+        }
+        if (!isIncorrect) {
+            jButton1.setEnabled(true);
+            jButton1.setFocusable(true);
+            jButton2.setEnabled(true);
+            jButton2.setFocusable(true);
+            jButton3.setEnabled(true);
+            jButton3.setFocusable(true);
+            jButton4.setEnabled(true);
+            jButton4.setFocusable(true);
+            jButton5.setEnabled(false);
+            jButton6.setEnabled(false);
+            buttonGroup1.clearSelection();
+            jRadioButton1.setEnabled(false);
+            jRadioButton2.setEnabled(false);
+            jTextField5.setText("");
+            jTextField5.setEnabled(false);
+            jTextField1.setText("");
+            jTextField1.setEnabled(false);
+            jTextField2.setText("");
+            jTextField2.setEnabled(false);
+            jTextField3.setText("");
+            jTextField3.setEnabled(false);
+            jTextField4.setText("");
+            jTextField4.setEnabled(false);
+            add = false;
+            edit = false;
+            remove = false;
+            print = false;
+            studentEntity = false;
+            groupEntity = false;
+        }
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
