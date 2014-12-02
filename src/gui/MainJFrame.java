@@ -5,6 +5,8 @@
  */
 package gui;
 
+import java.util.Arrays;
+
 /**
  *
  * @author Илья
@@ -24,6 +26,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
     }
     boolean add, edit, remove, print, studentEntity, groupEntity;
+    boolean[] textFields = new boolean[5];
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -531,7 +534,8 @@ public class MainJFrame extends javax.swing.JFrame {
         jLabel9.setVisible(false);
         jLabel10.setVisible(false);
         jLabel11.setVisible(false);
-        jLabel16.setVisible(false);          // Ready
+        jLabel16.setVisible(false);
+        Arrays.fill(textFields, false);// Ready
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
@@ -591,14 +595,15 @@ public class MainJFrame extends javax.swing.JFrame {
             jTextField5.setEnabled(false);
             jTextField3.setEnabled(false);
         }
-        // Ready
+        jLabel8.setVisible(false);// Ready
     }//GEN-LAST:event_jTextField1KeyTyped
 
     private void jTextField2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyTyped
         if (edit) {
             jTextField1.setEnabled(false);                 // реакция на начало заполнения поля даты
             jTextField3.setEnabled(false);                 // теперь команда определена полностью, лишние поля блокируются
-        }                                          // Ready
+        }
+        jLabel9.setVisible(false);// Ready
     }//GEN-LAST:event_jTextField2KeyTyped
 
     private void jTextField3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyTyped
@@ -613,52 +618,75 @@ public class MainJFrame extends javax.swing.JFrame {
             } else {
                 jTextField4.setEnabled(false);
             }
-        }                                              // Ready
+        }
+        jLabel10.setVisible(false);// Ready
     }//GEN-LAST:event_jTextField3KeyTyped
 
     private void jTextField5KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyTyped
         if (print) {
             jTextField1.setEnabled(false);                  // реакция на начало заполнения поля персонального номера студента
-            if (print) {                                        // теперь команда определена полностью, лишние поля блокируются
-                jTextField3.setEnabled(false);
-            }                                            // Ready
+            // теперь команда определена полностью, лишние поля блокируются
+            jTextField3.setEnabled(false);
+        }
+        jLabel16.setVisible(false);// Ready
     }//GEN-LAST:event_jTextField5KeyTyped
-    }
+
     private void jTextField4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyTyped
-        jTextField3.setEnabled(false);          // реакция на изменение поля факультета
-        // Ready
+        if (print) {
+            jTextField3.setEnabled(false);          // реакция на изменение поля факультета
+        }
+        jLabel11.setVisible(false);// Ready
     }//GEN-LAST:event_jTextField4KeyTyped
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        boolean isIncorrect = false;                            // кнопка выполнения execute
+
+        boolean isCorrect = false;                            // кнопка выполнения execute
         String curString;
 
+        Arrays.fill(textFields, false);
         if (jTextField5.isEnabled()) {                      // проверка на корректный ввод персонального номера студента
+            boolean checker = true;
             curString = jTextField5.getText();
             try {
                 int n = Integer.decode(curString);
             } catch (NumberFormatException e) {
                 jLabel16.setVisible(true);
-                isIncorrect = true;
+                checker = false;
+
+            }
+            if (checker) {
+                textFields[0] = true;
             }
         }
         if (jTextField1.isEnabled()) {                    // проверка на корректный ввод имени студента
+            boolean checker = true;
             curString = jTextField1.getText();
-            char[] curChar = curString.toCharArray();
-            for (int i = 0; i < curChar.length; i++) {
-                if (!Character.isLetter(curChar[i])) {
-                    isIncorrect = true;
-                    jLabel8.setVisible(true);
-                    break;
-                }
-            }
+            if (curString.length() != 0) {
+                char[] curChar = curString.toCharArray();
+                for (int i = 0; i < curChar.length; i++) {
+                    if (!Character.isLetter(curChar[i])) {
 
+                        jLabel8.setVisible(true);
+                        checker = false;
+                        break;
+                    }
+                }
+            } else {
+                jLabel8.setVisible(true);
+                checker = false;
+            }
+            if (checker) {
+                textFields[1] = true;
+            }
         }
+
         if (jTextField2.isEnabled()) {                            // проверка на корректный ввод даты зачисления студента
+            boolean checker=true;
             curString = jTextField2.getText();
             String[] curStrAr = curString.split("\\.");
             if (curStrAr.length != 3) {
-                isIncorrect = true;
+                checker=false;
+             
                 jLabel9.setVisible(true);
             } else {
                 for (int i = 0; i < 3; i++) {
@@ -666,32 +694,94 @@ public class MainJFrame extends javax.swing.JFrame {
                         int n = Integer.decode(curStrAr[i]);
                     } catch (NumberFormatException e) {
                         jLabel9.setVisible(true);
-                        isIncorrect = true;
+                        checker=false;
+                      
                     }
                 }
             }
+            if(checker){
+                textFields[2] = true;
+            }
         }
-        if(jTextField3.isEnabled()){                               // проверка на корректный ввод номера группы
+        if (jTextField3.isEnabled()) {                               // проверка на корректный ввод номера группы
+            boolean checker=true;
             curString = jTextField3.getText();
             try {
                 int n = Integer.decode(curString);
             } catch (NumberFormatException e) {
                 jLabel10.setVisible(true);
-                isIncorrect = true;
+                checker=false;
+                
+            }
+            if(checker){
+                textFields[3] = true;
             }
         }
-        if(jTextField4.isEnabled()){                             // проверка на корректный ввод факультета
+        if (jTextField4.isEnabled()) {                             // проверка на корректный ввод факультета
+            boolean checker=true;
             curString = jTextField4.getText();
-            char[] curChar = curString.toCharArray();
-            for (int i = 0; i < curChar.length; i++) {
-                if (!Character.isLetter(curChar[i])) {
-                    isIncorrect = true;
-                    jLabel11.setVisible(true);
-                    break;
+            if (curString.length() != 0) {
+                char[] curChar = curString.toCharArray();
+                for (int i = 0; i < curChar.length; i++) {
+                    if (!Character.isLetter(curChar[i])) {
+
+                        checker=false;
+                        jLabel11.setVisible(true);
+                        break;
+                    }
+                }
+            } else {
+                jLabel11.setVisible(true);
+                checker=false;
+            }
+            if(checker){
+                textFields[4] = true;
+            }
+        }
+        if (add) {                           // Add OK
+            if (studentEntity) {
+                if (textFields[1] == true && textFields[2] == true && textFields[3] == true) {
+                    isCorrect = true;
+                }
+            } else {
+                if (textFields[3] == true && textFields[4] == true) {
+                    isCorrect = true;
+                }
+            }
+
+        } else if (edit) {                   // Edit OK
+            if (studentEntity) {
+                if (textFields[0] == true && (textFields[1] == true || textFields[2] == true || textFields[3] == true)) {
+                    isCorrect = true;
+                }
+            } else {
+                if (textFields[3] == true && textFields[4] == true) {
+                    isCorrect = true;
+                }
+            }
+        } else if (remove) {                     // Remove OK
+            if (studentEntity) {
+                if (textFields[0] == true) {
+                    isCorrect = true;
+                }
+            } else {
+                if (textFields[3] == true) {
+                    isCorrect = true;
+                }
+            }
+        } else if (print) {                     // Print OK
+            if (studentEntity) {
+                if (textFields[0] == true || textFields[1] == true || textFields[3] == true) {
+                    isCorrect=true;
+                }
+            }
+            else{
+                if(textFields[3]==true || textFields[4]==true){
+                    isCorrect=true;
                 }
             }
         }
-        if (!isIncorrect) {
+        if (isCorrect) {
             jButton1.setEnabled(true);
             jButton1.setFocusable(true);
             jButton2.setEnabled(true);
@@ -715,12 +805,18 @@ public class MainJFrame extends javax.swing.JFrame {
             jTextField3.setEnabled(false);
             jTextField4.setText("");
             jTextField4.setEnabled(false);
+            jLabel8.setVisible(false);
+            jLabel9.setVisible(false);
+            jLabel10.setVisible(false);
+            jLabel11.setVisible(false);
+            jLabel16.setVisible(false);
             add = false;
             edit = false;
             remove = false;
             print = false;
             studentEntity = false;
             groupEntity = false;
+
         }
     }//GEN-LAST:event_jButton5ActionPerformed
 
