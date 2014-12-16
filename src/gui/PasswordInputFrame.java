@@ -5,6 +5,9 @@
  */
 package gui;
 
+import java.awt.Color;
+import java.awt.event.KeyEvent;
+
 /**
  *
  * @author Илья
@@ -16,9 +19,8 @@ public class PasswordInputFrame extends javax.swing.JFrame {
      */
     public PasswordInputFrame() {
         initComponents();
-        jLabel2.setVisible(false);
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -32,7 +34,6 @@ public class PasswordInputFrame extends javax.swing.JFrame {
         jPasswordField1 = new javax.swing.JPasswordField();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
         jDialog1.getContentPane().setLayout(jDialog1Layout);
@@ -65,10 +66,6 @@ public class PasswordInputFrame extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Please input the password");
 
-        jLabel2.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Wrong password!");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -78,19 +75,17 @@ public class PasswordInputFrame extends javax.swing.JFrame {
                 .addComponent(jButton1)
                 .addGap(169, 169, 169))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(133, 133, 133)
-                            .addComponent(jLabel1))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addGap(63, 63, 63)
-                            .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(133, 133, 133)
+                        .addComponent(jLabel1))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(63, 63, 63)
+                        .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(109, Short.MAX_VALUE))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel1, jLabel2, jPasswordField1});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel1, jPasswordField1});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -101,47 +96,33 @@ public class PasswordInputFrame extends javax.swing.JFrame {
                 .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(44, 44, 44)
                 .addComponent(jButton1)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         boolean flag=false;
-        char [] password={'1','2','3'};
-        char [] userSequence=jPasswordField1.getPassword();
-        if(password.length==userSequence.length){
-            flag=true;
+        boolean flag = false;
+        char[] password = {'1', '2', '3'};
+        char[] userSequence = jPasswordField1.getPassword();
+        if (password.length == userSequence.length) {
+            flag = true;
         }
-        if(flag){
-        for(int i=0; i<password.length; i++){
-            if(password[i]!=userSequence[i]){
-            flag=false;
+        if (flag) {
+            for (int i = 0; i < password.length; i++) {
+                if (password[i] != userSequence[i]) {
+                    flag = false;
+                }
             }
-        }
-        if(flag){
-            new MainJFrame().setVisible(true);
-            this.dispose();
-            //new MainJFrame().setVisible(true);
-       /*     java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
+            if (flag) {
                 new MainJFrame().setVisible(true);
+                this.dispose();
+            } else {
+                jPasswordField1.setBackground(Color.red);
             }
-        });  */
-       
-            }
-        else{
-            jLabel2.setVisible(true);
-        }
-      
-        }
-        
-        else{
-            jLabel2.setVisible(true);
+        } else {
+            jPasswordField1.setBackground(Color.red);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -172,7 +153,7 @@ public class PasswordInputFrame extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-        
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
@@ -180,14 +161,13 @@ public class PasswordInputFrame extends javax.swing.JFrame {
                 new PasswordInputFrame().setVisible(true);
             }
         });
-        
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPasswordField jPasswordField1;
     // End of variables declaration//GEN-END:variables
 }
