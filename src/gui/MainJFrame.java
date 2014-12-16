@@ -5,6 +5,7 @@
  */
 package gui;
 
+import java.awt.Color;
 import java.util.Arrays;
 
 /**
@@ -18,12 +19,6 @@ public class MainJFrame extends javax.swing.JFrame {
      */
     public MainJFrame() {
         initComponents();
-        jLabel8.setVisible(false);            // метки, сообщающие об ошибке ввода
-        jLabel9.setVisible(false);
-        jLabel10.setVisible(false);
-        jLabel11.setVisible(false);
-        jLabel16.setVisible(false);
-
     }
     boolean add, edit, remove, print, studentEntity, groupEntity;
     boolean[] textFields = new boolean[5];
@@ -62,11 +57,6 @@ public class MainJFrame extends javax.swing.JFrame {
         jTextField3 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
         jTextField5 = new javax.swing.JTextField();
         jButton6 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
@@ -110,6 +100,9 @@ public class MainJFrame extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTable5.setSelectionBackground(new java.awt.Color(255, 0, 0));
+        jTable5.setSelectionForeground(new java.awt.Color(255, 0, 0));
+        jTable5.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane5.setViewportView(jTable5);
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -143,6 +136,8 @@ public class MainJFrame extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTable6.setSelectionBackground(new java.awt.Color(255, 0, 0));
+        jTable6.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane6.setViewportView(jTable6);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -296,26 +291,6 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel8.setText("Wrong input!");
-
-        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel9.setText("Wrong input!");
-
-        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel10.setText("Wrong input!");
-
-        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel11.setText("Wrong input!");
-
-        jLabel16.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(255, 51, 51));
-        jLabel16.setText("Wrong input!");
-
         jTextField5.setEnabled(false);
         jTextField5.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -350,12 +325,8 @@ public class MainJFrame extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
-                            .addComponent(jLabel16)
                             .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(42, 42, 42)
-                                .addComponent(jLabel8))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGap(34, 34, 34)
                                 .addComponent(jLabel4))
@@ -364,17 +335,14 @@ public class MainJFrame extends javax.swing.JFrame {
                                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(34, 34, 34)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel9)
                             .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6))
                         .addGap(26, 26, 26)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel10))
+                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(28, 28, 28)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel11)
                             .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
@@ -405,18 +373,11 @@ public class MainJFrame extends javax.swing.JFrame {
                     .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel16))
-                .addGap(18, 18, 18)
+                .addGap(31, 31, 31)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton5)
                     .addComponent(jButton6))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         jMenu1.setText("Help");
@@ -530,11 +491,11 @@ public class MainJFrame extends javax.swing.JFrame {
         print = false;
         studentEntity = false;
         groupEntity = false;
-        jLabel8.setVisible(false);
-        jLabel9.setVisible(false);
-        jLabel10.setVisible(false);
-        jLabel11.setVisible(false);
-        jLabel16.setVisible(false);
+        jTextField1.setBackground(Color.WHITE);
+        jTextField2.setBackground(Color.WHITE);
+        jTextField3.setBackground(Color.WHITE);
+        jTextField4.setBackground(Color.WHITE);
+        jTextField5.setBackground(Color.WHITE);
         Arrays.fill(textFields, false);// Ready
     }//GEN-LAST:event_jButton6ActionPerformed
 
@@ -544,17 +505,22 @@ public class MainJFrame extends javax.swing.JFrame {
         jRadioButton2.setEnabled(false);
         jButton5.setEnabled(true);
         if (add) {
+            jTextField1.setBackground(Color.LIGHT_GRAY);
+            jTextField2.setBackground(Color.LIGHT_GRAY);
+            jTextField3.setBackground(Color.LIGHT_GRAY);
             jTextField1.setEnabled(true);                // выбор сущности студента для изменений
             jTextField2.setEnabled(true);
             jTextField3.setEnabled(true);
         }
         if (edit) {
+            jTextField5.setBackground(Color.LIGHT_GRAY);
             jTextField5.setEnabled(true);
             jTextField1.setEnabled(true);
             jTextField2.setEnabled(true);
             jTextField3.setEnabled(true);
         }
         if (remove) {
+            jTextField5.setBackground(Color.LIGHT_GRAY);
             jTextField5.setEnabled(true);
         }
         if (print) {
@@ -570,14 +536,19 @@ public class MainJFrame extends javax.swing.JFrame {
         jRadioButton2.setEnabled(false);
         jButton5.setEnabled(true);
         if (add) {
+            jTextField3.setBackground(Color.LIGHT_GRAY);
+            jTextField4.setBackground(Color.LIGHT_GRAY);
             jTextField3.setEnabled(true);       // выбор сущности группы для изменений
             jTextField4.setEnabled(true);
         }
         if (edit) {
+            jTextField3.setBackground(Color.LIGHT_GRAY);
+            jTextField4.setBackground(Color.LIGHT_GRAY);
             jTextField3.setEnabled(true);
             jTextField4.setEnabled(true);
         }
         if (remove) {
+            jTextField3.setBackground(Color.LIGHT_GRAY);
             jTextField3.setEnabled(true);
         }
         if (print) {
@@ -587,62 +558,53 @@ public class MainJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButton2ActionPerformed
 
     private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
-        if (edit) {
-            jTextField2.setEnabled(false);
-            jTextField3.setEnabled(false);           // реакция на начало заполнения поля имени
-        }                                            // теперь команда определена полностью, лишние поля блокируются
-        if (print) {
-            jTextField5.setEnabled(false);
-            jTextField3.setEnabled(false);
+        if (add) {                                             // реакция на начало заполения поля имени
+            jTextField1.setBackground(Color.LIGHT_GRAY);
+        } else {
+            jTextField1.setBackground(Color.WHITE);
         }
-        jLabel8.setVisible(false);// Ready
+        // Ready  
     }//GEN-LAST:event_jTextField1KeyTyped
 
     private void jTextField2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyTyped
-        if (edit) {
-            jTextField1.setEnabled(false);                 // реакция на начало заполнения поля даты
-            jTextField3.setEnabled(false);                 // теперь команда определена полностью, лишние поля блокируются
+        if (add) {              // реакция на начало заполнения поля даты
+            jTextField2.setBackground(Color.LIGHT_GRAY);
+        } else {
+            jTextField2.setBackground(Color.WHITE);
         }
-        jLabel9.setVisible(false);// Ready
+        // Ready 
     }//GEN-LAST:event_jTextField2KeyTyped
 
     private void jTextField3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyTyped
-        if (edit) {
-            jTextField1.setEnabled(false);
-            jTextField2.setEnabled(false);
-        }                                                   // реакция на начало заполнения поля номера группы
-        if (print) {                                        // теперь команда определена полностью, лишние поля блокируются
-            if (studentEntity) {
-                jTextField1.setEnabled(false);
-                jTextField5.setEnabled(false);
-            } else {
-                jTextField4.setEnabled(false);
-            }
+        if (print || (edit && studentEntity)) {                                         // реакция на начало заполнения поля номера группы
+            jTextField3.setBackground(Color.WHITE);
+        } else {
+            jTextField3.setBackground(Color.LIGHT_GRAY);
         }
-        jLabel10.setVisible(false);// Ready
+        // Ready 
     }//GEN-LAST:event_jTextField3KeyTyped
 
     private void jTextField5KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyTyped
-        if (print) {
-            jTextField1.setEnabled(false);                  // реакция на начало заполнения поля персонального номера студента
-            // теперь команда определена полностью, лишние поля блокируются
-            jTextField3.setEnabled(false);
+        if (print) {               // реакция на начало заполнения поля персонального номера студента
+            jTextField5.setBackground(Color.WHITE);
+        } else {
+            jTextField5.setBackground(Color.LIGHT_GRAY);
         }
-        jLabel16.setVisible(false);// Ready
+// Ready 
     }//GEN-LAST:event_jTextField5KeyTyped
 
     private void jTextField4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyTyped
-        if (print) {
-            jTextField3.setEnabled(false);          // реакция на изменение поля факультета
+        if (print) {         // реакция на изменение поля факультета
+            jTextField4.setBackground(Color.WHITE);
+        } else {
+            jTextField4.setBackground(Color.LIGHT_GRAY);
         }
-        jLabel11.setVisible(false);// Ready
+        // Ready 
     }//GEN-LAST:event_jTextField4KeyTyped
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-
         boolean isCorrect = false;                            // кнопка выполнения execute
         String curString;
-
         Arrays.fill(textFields, false);
         if (jTextField5.isEnabled()) {                      // проверка на корректный ввод персонального номера студента
             boolean checker = true;
@@ -650,7 +612,14 @@ public class MainJFrame extends javax.swing.JFrame {
             try {
                 int n = Integer.decode(curString);
             } catch (NumberFormatException e) {
-                jLabel16.setVisible(true);
+                boolean curFlag = false;
+                if (print && studentEntity && curString.length() == 0) {
+                    curFlag = true;
+                }
+                if (!curFlag) {
+                    jTextField5.setBackground(Color.red);
+
+                }
                 checker = false;
 
             }
@@ -665,14 +634,21 @@ public class MainJFrame extends javax.swing.JFrame {
                 char[] curChar = curString.toCharArray();
                 for (int i = 0; i < curChar.length; i++) {
                     if (!Character.isLetter(curChar[i])) {
-
-                        jLabel8.setVisible(true);
+                        jTextField1.setBackground(Color.red);
                         checker = false;
                         break;
                     }
                 }
             } else {
-                jLabel8.setVisible(true);
+                boolean curFlag = false;
+                if (print && studentEntity) {
+                    curFlag = true;
+                } else if (edit && studentEntity) {
+                    curFlag = true;
+                }
+                if (!curFlag) {
+                    jTextField1.setBackground(Color.red);
+                }
                 checker = false;
             }
             if (checker) {
@@ -681,60 +657,76 @@ public class MainJFrame extends javax.swing.JFrame {
         }
 
         if (jTextField2.isEnabled()) {                            // проверка на корректный ввод даты зачисления студента
-            boolean checker=true;
+            boolean checker = true;
             curString = jTextField2.getText();
-            String[] curStrAr = curString.split("\\.");
-            if (curStrAr.length != 3) {
-                checker=false;
-             
-                jLabel9.setVisible(true);
+            if (edit && studentEntity && curString.length() == 0) {
+                checker = false;
             } else {
-                for (int i = 0; i < 3; i++) {
-                    try {
-                        int n = Integer.decode(curStrAr[i]);
-                    } catch (NumberFormatException e) {
-                        jLabel9.setVisible(true);
-                        checker=false;
-                      
+                String[] curStrAr = curString.split("\\.");
+                if (curStrAr.length != 3) {
+                    checker = false;
+                    jTextField2.setBackground(Color.red);
+                } else {
+                    for (int i = 0; i < 3; i++) {
+                        try {
+                            int n = Integer.decode(curStrAr[i]);
+                        } catch (NumberFormatException e) {
+                            jTextField2.setBackground(Color.red);
+                            checker = false;
+                        }
                     }
                 }
             }
-            if(checker){
+            if (checker) {
                 textFields[2] = true;
             }
         }
         if (jTextField3.isEnabled()) {                               // проверка на корректный ввод номера группы
-            boolean checker=true;
+            boolean checker = true;
             curString = jTextField3.getText();
             try {
                 int n = Integer.decode(curString);
             } catch (NumberFormatException e) {
-                jLabel10.setVisible(true);
-                checker=false;
-                
+                boolean curFlag = false;
+                if (print && groupEntity && curString.length() == 0) {
+                    curFlag = true;
+                } else if (print && studentEntity && curString.length() == 0) {
+                    curFlag = true;
+                } else if (edit && studentEntity && curString.length() == 0) {
+                    curFlag = true;
+                }
+                if (!curFlag) {
+                    jTextField3.setBackground(Color.red);
+                }
+                checker = false;
             }
-            if(checker){
+            if (checker) {
                 textFields[3] = true;
             }
         }
         if (jTextField4.isEnabled()) {                             // проверка на корректный ввод факультета
-            boolean checker=true;
+            boolean checker = true;
             curString = jTextField4.getText();
             if (curString.length() != 0) {
                 char[] curChar = curString.toCharArray();
                 for (int i = 0; i < curChar.length; i++) {
                     if (!Character.isLetter(curChar[i])) {
-
-                        checker=false;
-                        jLabel11.setVisible(true);
+                        checker = false;
+                        jTextField4.setBackground(Color.red);
                         break;
                     }
                 }
             } else {
-                jLabel11.setVisible(true);
-                checker=false;
+                boolean curFlag = false;
+                if (print && groupEntity) {
+                    curFlag = true;
+                }
+                if (!curFlag) {
+                    jTextField4.setBackground(Color.red);
+                }
+                checker = false;
             }
-            if(checker){
+            if (checker) {
                 textFields[4] = true;
             }
         }
@@ -748,7 +740,6 @@ public class MainJFrame extends javax.swing.JFrame {
                     isCorrect = true;
                 }
             }
-
         } else if (edit) {                   // Edit OK
             if (studentEntity) {
                 if (textFields[0] == true && (textFields[1] == true || textFields[2] == true || textFields[3] == true)) {
@@ -772,12 +763,11 @@ public class MainJFrame extends javax.swing.JFrame {
         } else if (print) {                     // Print OK
             if (studentEntity) {
                 if (textFields[0] == true || textFields[1] == true || textFields[3] == true) {
-                    isCorrect=true;
+                    isCorrect = true;
                 }
-            }
-            else{
-                if(textFields[3]==true || textFields[4]==true){
-                    isCorrect=true;
+            } else {
+                if (textFields[3] == true || textFields[4] == true) {
+                    isCorrect = true;
                 }
             }
         }
@@ -805,18 +795,17 @@ public class MainJFrame extends javax.swing.JFrame {
             jTextField3.setEnabled(false);
             jTextField4.setText("");
             jTextField4.setEnabled(false);
-            jLabel8.setVisible(false);
-            jLabel9.setVisible(false);
-            jLabel10.setVisible(false);
-            jLabel11.setVisible(false);
-            jLabel16.setVisible(false);
             add = false;
             edit = false;
             remove = false;
             print = false;
             studentEntity = false;
             groupEntity = false;
-
+            jTextField1.setBackground(Color.WHITE);
+            jTextField2.setBackground(Color.WHITE);
+            jTextField3.setBackground(Color.WHITE);
+            jTextField4.setBackground(Color.WHITE);
+            jTextField5.setBackground(Color.WHITE);
         }
     }//GEN-LAST:event_jButton5ActionPerformed
 
@@ -832,41 +821,22 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
-    private javax.swing.JTable jTable4;
     private javax.swing.JTable jTable5;
     private javax.swing.JTable jTable6;
     private javax.swing.JTextField jTextField1;
